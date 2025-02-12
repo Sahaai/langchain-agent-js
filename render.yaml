@@ -1,0 +1,30 @@
+# Exported from Render on 2025-02-12T13:05:04Z
+databases:
+  - name: langchain_js_postgres
+    databaseName: langchain_js_postgres
+    user: langchain_js_postgres_user
+    plan: basic-256mb
+    region: singapore
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: everywhere
+    postgresMajorVersion: "16"
+
+# Exported from Render on 2025-02-12T13:22:29Z
+services:
+  - type: web
+    name: langchain_js_server:latest
+    runtime: image
+    image:
+      url: ghcr.io/sahaai/langchain-agent-js:latest
+
+    plan: starter
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: POSTGRES_DB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+    region: singapore
+version: "1"

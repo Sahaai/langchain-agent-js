@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: .
+      target: build
+    volumes:
+     - ./:/app
+     - /app/node_modules
+    ports:
+     - 8005:8005
+    env_file:
+     - prod.env
+    command: npm run dev
